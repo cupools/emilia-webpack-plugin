@@ -27,6 +27,7 @@
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^2.3.3",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
     "webpack-merge": "^1.1.1"
   },

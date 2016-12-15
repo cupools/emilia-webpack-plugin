@@ -12,13 +12,17 @@ const cases = fs.readdirSync('test/cases')
 const defaultWebpackConfig = {
   output: {
     path: 'test/tmp',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
-    loaders: {
+    loaders: [{
       test: /\.css$/,
       loader: 'style!css'
-    }
+    }, {
+      test: /\.png$/,
+      loader: 'url'
+    }]
   }
 }
 
@@ -29,7 +33,12 @@ describe('EmiliaPlugin', function () {
       const webpackConfig = path.resolve(dir, 'webpack.config.js')
       const options = require(webpackConfig) // eslint-disable-line
 
-      done()
+      const opt = webpackMerge(defaultWebpackConfig, options)
+
+      webpack(opt)
+        .run(function (err, stat) {
+          done()
+        })
     })
   })
 })

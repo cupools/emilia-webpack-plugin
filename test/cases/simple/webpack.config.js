@@ -1,7 +1,8 @@
 const EmiliaPlugin = require('../../../')
 
 module.exports = {
-  entry: './index',
+  context: __dirname,
+  entry: './index.js',
   plugins: [
     new EmiliaPlugin()
   ]
