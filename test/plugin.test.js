@@ -27,6 +27,7 @@ const defaultWebpackConfig = {
 }
 
 describe('EmiliaPlugin', function () {
+  this.timeout(Infinity)
   cases.forEach(function (testCase) {
     it(testCase, function (done) {
       const dir = path.resolve('test/cases', testCase)
