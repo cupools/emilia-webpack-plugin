@@ -18,7 +18,7 @@ const defaultWebpackConfig = {
   module: {
     loaders: [{
       test: /\.css$/,
-      loader: 'style!css'
+      loader: 'style!css!' + path.resolve('lib/loader.js')
     }, {
       test: /\.png$/,
       loader: 'url'

@@ -1,4 +1,4 @@
-const EmiliaPlugin = require('../../../')
+const EmiliaPlugin = require('../../../index')
 
 module.exports = {
   context: __dirname,

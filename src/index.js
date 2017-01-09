@@ -1,20 +1,30 @@
+import path from 'path'
+
 export default class EmiliaPlugin {
   apply(compiler) {
     const options = this.options || {}
 
-    compiler.plugin('normal-module-factory', function (nmf) {
-      nmf.plugin('before-resolve', function (data, callback) {
-        // try to get spite hash
-        callback(null, data)
+    compiler.plugin('normal-module-factory', nmf => {
+      nmf.plugin('before-resolve', (data, callback) => {
+        if (!data) {
+          return callback()
+        }
+
+        return callback(null, {
+          ...data,
+          request: data.request.replace(/\d\.png(\?__sprite)?/, '7.png')
+        })
       })
     })
 
-    compiler.plugin('compilation', function (compilation) {
-      compilation.plugin('normal-module-loader', function (loaderContext, module) {
-        // loaderContext.spriteHash = 'sprite
+    compiler.plugin('compilation', compilation => {
+      compilation.plugin('normal-module-loader', (loaderContext, module) => {
+        // loaderContext.spriteHash = 'sprite'
       })
 
-      compilation.plugin('optimize-modules', function (modules) {})
+      compilation.plugin('optimize-modules', modules => {
+
+      })
     })
 
     compiler.plugin('emit', (compilation, callback) => {
