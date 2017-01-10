@@ -4,6 +4,7 @@ const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const Chai = require('chai')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 Chai.should()
 
@@ -18,12 +19,15 @@ const defaultWebpackConfig = {
   module: {
     loaders: [{
       test: /\.css$/,
-      loader: 'style!css!' + path.resolve('lib/loader.js')
+      loader: ExtractTextPlugin.extract('style', 'css!' + path.resolve('lib/loader.js'))
     }, {
       test: /\.png$/,
-      loader: 'url'
+      loader: 'url?limit=10'
     }]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('style.css')
+  ]
 }
 
 describe('EmiliaPlugin', function () {

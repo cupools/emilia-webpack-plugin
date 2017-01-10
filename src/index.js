@@ -12,7 +12,7 @@ export default class EmiliaPlugin {
 
         return callback(null, {
           ...data,
-          request: data.request.replace(/\d\.png(\?__sprite)?/, '7.png')
+          request: data.request.indexOf('.png') > -1 ? './extract.png' : data.request
         })
       })
     })
