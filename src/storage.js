@@ -26,7 +26,8 @@ export default {
       mark => {
         const { dependences } = store[mark]
         const buffers = dependences.map(p => fs.readFileSync(p))
-        const result = sprite({}, buffers)
+        const result = sprite({}, buffers, dependences)
+
         Object.assign(store, {
           [mark]: { dependences, ...result }
         })

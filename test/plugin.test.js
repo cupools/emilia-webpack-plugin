@@ -4,6 +4,7 @@ const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const Chai = require('chai')
+const del = require('del')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 Chai.should()
@@ -31,6 +32,10 @@ const defaultWebpackConfig = {
 }
 
 describe('EmiliaPlugin', function () {
+  beforeEach(() => {
+    del.sync(['.extract/*', 'test/tmp/*'])
+  })
+
   this.timeout(Infinity)
   cases.forEach(function (testCase) {
     it(testCase, function (done) {
