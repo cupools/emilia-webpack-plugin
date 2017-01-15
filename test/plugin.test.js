@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const Chai = require('chai')
 const del = require('del')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 Chai.should()
 

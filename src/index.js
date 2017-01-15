@@ -25,7 +25,12 @@ export default class EmiliaPlugin {
         }
 
         const realpath = path.join(context, request.substr(0, subIndex))
+
+        // Fix me, avoid starting generation each time.
         storage.add(mark, realpath)
+        storage.generate()
+
+        fs.writeFileSync(path.join(__dirname, '../.extract', `${mark}.png`), storage.get(mark).buffer, 'binary')
 
         return callback(null, {
           ...data,
@@ -33,18 +38,15 @@ export default class EmiliaPlugin {
           context: path.join(__dirname, '../.extract')
         })
       })
+
+      nmf.plugin('after-resolve', (data, callback) => {
+        return callback(null, data)
+      })
     })
 
     compiler.plugin('compilation', compilation => {
-      let first = true
       compilation.plugin('normal-module-loader', (loaderContext, module) => {
         Object.assign(loaderContext, { emiliaContext: module.context })
-
-        if (first) {
-          storage.generate()
-          storage.get('sprite') && fs.writeFileSync(path.join(__dirname, '../.extract', 'sprite.png'), storage.get('sprite').buffer, 'binary')
-          first = false
-        }
       })
     })
 
