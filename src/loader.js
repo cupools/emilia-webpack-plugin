@@ -1,5 +1,3 @@
-'use strict'
-
 import path from 'path'
 import postcss from 'postcss'
 import loaderUtils from 'loader-utils'
@@ -25,7 +23,7 @@ module.exports = function (content) {
       return
     }
 
-    const coordinate = result.filter(item => item.meta === realpath)[0]
+    const coordinate = result.coordinates.filter(item => item.meta === realpath)[0]
     if (!coordinate) {
       return
     }
