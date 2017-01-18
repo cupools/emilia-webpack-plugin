@@ -19,8 +19,15 @@ export default class EmiliaPlugin {
 
         const execResult = REG.exec(request)
         const mark = execResult && execResult[1]
+        const fromJS = subIndex === 0
 
-        if (!request.includes('.png') || subIndex === -1 || !mark) {
+        if (fromJS) {
+          return callback(null, {
+            ...data,
+            request: `./${mark}.png`,
+            context: path.join(__dirname, '../.extract')
+          })
+        } else if (!request.includes('.png') || subIndex === -1 || !mark) {
           return callback(null, data)
         }
 
