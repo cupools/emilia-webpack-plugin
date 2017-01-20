@@ -21,6 +21,12 @@ export default class EmiliaPlugin {
         const mark = execResult && execResult[1]
         const fromJS = subIndex === 0
 
+        if (mark) {
+          const buf = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcBAMAAABv4amZAAAAGFBMVEUAAAD86Fj86Fj86Fj86Fj86Fj86Fj86FgF5RrBAAAAB3RSTlMAWofdpe+PVNsiFgAAAB1JREFUGNNjEC9HBg4Dwi81hoEEML+IAQ5G+fj5AAqDW9eAaVTQAAAAAElFTkSuQmCC', 'base64')
+          const p = path.join(__dirname, '../.extract', `${mark}.png`)
+          fs.writeFileSync(p, buf, 'binary')
+        }
+
         if (fromJS) {
           return callback(null, {
             ...data,

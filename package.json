@@ -51,6 +51,7 @@
   "homepage": "https://github.com/cupools/emilia-webpack-plugin#readme",
   "dependencies": {
     "file-loader": "^0.9.0",
+    "loader-utils": "^0.2.16",
     "sprite-tool": "github:cupools/sprite-tool"
   }
 }

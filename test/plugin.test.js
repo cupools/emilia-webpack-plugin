@@ -23,7 +23,7 @@ const defaultWebpackConfig = {
       loader: ExtractTextPlugin.extract('style', 'css!' + path.resolve('lib/loader.js'))
     }, {
       test: /\.png$/,
-      loader: 'url?limit=10'
+      loader: 'url?limit=10' + '!' + path.resolve('lib/img-loader.js')
     }]
   },
   plugins: [

@@ -20,6 +20,7 @@ export default {
     return this.store[mark]
   },
   generate() {
+    // TODO cache
     const { store } = this
 
     Object.keys(store).forEach(

@@ -8,6 +8,8 @@ module.exports = function (content) {
   const root = postcss.parse(content)
   const context = this.emiliaContext
 
+  storage.generate()
+
   root.walkDecls(/background(-image)?$/, decl => {
     const { value } = decl
     const start = value.indexOf('url(')
@@ -17,6 +19,7 @@ module.exports = function (content) {
       return
     }
 
+    const resource = this.resource
     const realpath = path.join(context, url)
     const result = storage.get(tag)
     if (!result) {

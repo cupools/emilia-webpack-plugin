@@ -1,3 +1,3 @@
 require('./a.css')
 require('./b.css')
-window.expectSprite = require('?__sprite')
+// window.expectSprite = require('?__sprite')
