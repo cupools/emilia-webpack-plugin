@@ -19,9 +19,9 @@ module.exports = function (content) {
       return
     }
 
-    const resource = this.resource
     const realpath = path.join(context, url)
     const result = storage.get(tag)
+
     if (!result) {
       return
     }
