@@ -18,12 +18,20 @@ const defaultWebpackConfig = {
     publicPath: '/'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style', 'css!' + path.resolve('lib/loader.js'))
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: 'css-loader'
+      })
     }, {
       test: /\.png$/,
-      loader: 'url?limit=10' + '!' + path.resolve('lib/img-loader.js')
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10
+        }
+      }]
     }]
   },
   plugins: [

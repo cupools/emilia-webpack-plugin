@@ -8,6 +8,9 @@
     "coverage": "cat test/coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "dev": "rm -rf lib && node node_modules/babel-cli/bin/babel src -d lib -D -w"
   },
+  "dependencies": {
+    "sprite-tool": "github:cupools/sprite-tool"
+  },
   "devDependencies": {
     "assert": "^1.4.1",
     "babel-cli": "^6.18.0",
@@ -25,13 +28,15 @@
     "eslint": "^3.7.1",
     "eslint-config-airbnb-base": "^8.0.0",
     "eslint-plugin-import": "^1.16.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
+    "file-loader": "^0.10.0",
     "istanbul": "^1.1.0-alpha.1",
+    "loader-utils": "^0.2.16",
     "mocha": "^2.3.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.14.0",
-    "webpack-merge": "^1.1.1"
+    "webpack": "^2.2.1",
+    "webpack-merge": "^2.6.1"
   },
   "repository": {
     "type": "git",
@@ -48,10 +53,5 @@
   "bugs": {
     "url": "https://github.com/cupools/emilia-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/cupools/emilia-webpack-plugin#readme",
-  "dependencies": {
-    "file-loader": "^0.9.0",
-    "loader-utils": "^0.2.16",
-    "sprite-tool": "github:cupools/sprite-tool"
-  }
+  "homepage": "https://github.com/cupools/emilia-webpack-plugin#readme"
 }
